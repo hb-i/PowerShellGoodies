@@ -1,0 +1,9 @@
+#You could easily run this as a function.
+
+$computer = read-host 'enter computer name'
+
+$Credential = Get-Credential -Credential $env:USERDOMAIN\$env:USERNAME
+$Username = $Credential.UserName
+$Password = $Credential.GetNetworkCredential().Password
+
+psexec \\$computer -u $UserName -p $Password /accepteula -h cmd /c "msiexec.exe /i \\server\share\ConnectWiseControl.msi /qn"
