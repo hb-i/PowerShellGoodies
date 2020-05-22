@@ -20,6 +20,8 @@ Function examples without scheduling task:
 Set-VMConfig -VMName WebServer01 -Memory 8 -cpu 4
 Set-VMConfig -VMName WebServer01 -Memory 6
 Set-VMConfig -VMName WebServer01 -cpu 2
+
+Logs are written to Set-VMConfig-Log.txt under $temppath which by default is C:\temp. $temppath is created if it doesn't exist.
 #>
 
 function Set-VMConfig
