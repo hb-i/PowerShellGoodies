@@ -6,7 +6,6 @@ function pping
     # If ping-able
     if (Test-Connection $hostname -Quiet -Count 1)
     {
-        $sendnotification = 0
 
         # Ping until $hostname can no longer be pinged
         Write-Host "$hostname is currently online, waiting until it goes offline..."
