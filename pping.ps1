@@ -6,6 +6,7 @@ function pping
     # If ping-able
     if (Test-Connection $hostname -Quiet -Count 1)
     {
+        $sendnotification = 0
 
         # Ping until $hostname can no longer be pinged
         Write-Host "$hostname is currently online, waiting until it goes offline..."
@@ -26,7 +27,7 @@ function pping
         $result = [Microsoft.VisualBasic.Interaction]::MsgBox("$hostname is BACK online!", 'OKOnly,SystemModal,Information', 'PPING')
         
         # Exit script otherwise the while loop below will trigger causing duplicate online message
-        exit
+        Return "End of pping"
     }
 
     while (-not (Test-Connection $hostname -Quiet -Count 1))
@@ -35,5 +36,4 @@ function pping
     }
     Add-Type -AssemblyName Microsoft.VisualBasic
     $result = [Microsoft.VisualBasic.Interaction]::MsgBox("$hostname is online!", 'OKOnly,SystemModal,Information', 'PPING')
-
 }
